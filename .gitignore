@@ -1,0 +1,5 @@
+.bowerrc
+.jscsrc
+.jshintrc
+.vscode
+node_modules/

@@ -2,7 +2,8 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     jscs = require('gulp-jscs'),
     nodemon = require('gulp-nodemon'),
-    jsFiles = ['*.js', 'src/**/*.js'];
+    jsFiles = ['*.js', 'src/**/*.js'],
+    watchFiles = ['*.js', 'src/**/*.js', '*.jade', 'src/**/*.jade'];
 
 gulp.task('style', function() {
   return gulp.src(jsFiles)
@@ -27,7 +28,7 @@ gulp.task('inject', function() {
         ignorePath: '/public'
       };
 
-  return gulp.src('./src/views/*.html')
+  return gulp.src('./src/views/*.jade')
         .pipe(wiredep(options))
         .pipe(inject(injectSrc, injectOptions))
         .pipe(gulp.dest('./src/views'));
@@ -40,7 +41,7 @@ gulp.task('serve', ['style', 'inject'], function() {
     env: {
       'PORT': 3000
     },
-    watch: jsFiles
+    watch: watchFiles
   };
 
   return nodemon(options)

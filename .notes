@@ -1,0 +1,8 @@
+To Start Mongo:
+mongod --config /usr/local/etc/mongod.conf
+
+To run mongo as a background process that starts automatically:
+brew services start mongodb
+
+Mongo connection string:
+mongodb://127.0.0.1:27107

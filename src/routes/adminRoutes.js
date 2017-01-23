@@ -3,6 +3,7 @@
 var express = require('express'),
     adminRouter = express.Router(),
     mongodb = require('mongodb').MongoClient,
+    connectionString = 'mongodb://localhost:27017/libraryApp',
     books = [
       {
         title: 'War and Peace',
@@ -30,10 +31,16 @@ var express = require('express'),
       }];
 
 var router = function(nav) {
+  adminRouter.use(function(req, res, next) {
+    if (!req.user) {
+      res.redirect('/');
+    }
+    next();
+  });
+
   adminRouter.route('/addBooks')
     .get(function(req, res) {
-      var url = 'mongodb://localhost:27017/libraryApp';
-      mongodb.connect(url, function(err, db) {
+      mongodb.connect(connectionString, function(err, db) {
         var collection = db.collection('books');
         collection.remove({});
         collection.insertMany(books,

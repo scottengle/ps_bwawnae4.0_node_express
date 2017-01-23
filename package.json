@@ -4,12 +4,17 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.16.0",
     "bower": "^1.8.0",
+    "cookie-parser": "^1.4.3",
     "ejs": "^2.5.5",
     "express": "~4.13.0",
     "express-handlebars": "^2.0.1",
+    "express-session": "^1.14.2",
     "jade": "^1.11.0",
     "mongodb": "^2.2.21",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "typescript": "^2.1.5"
   },
   "devDependencies": {
